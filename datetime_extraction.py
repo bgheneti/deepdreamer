@@ -3,8 +3,8 @@ import mailbox
 import os
 from dateutil import parser
 import datetime
-from datetime import timezone
 import sys
+import pytz
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 file_path = os.path.join(os.sep, dir_path, sys.argv[1])
@@ -14,7 +14,7 @@ print(str(len(mbox)) + " messages")
 dates = [message.get("Date") for message in mbox]
 
 def boom(dt):
-	return dt.replace(tzinfo=timezone.utc).astimezone(tz=None)
+	return dt.replace(tzinfo=pytz.utc).astimezone(tz=pytz.timezone('US/Eastern'))
 
 freq = [[0 for col in range(24)] for row in range(7)]
 
@@ -29,4 +29,4 @@ for date in dates:
 #print('\n')
 
 for row in freq:
-	print(*row, sep=' || ')
+	print ' || '.join([str(val) for val in row])
