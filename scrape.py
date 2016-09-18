@@ -1,11 +1,14 @@
 import email
 import mailbox
 import os
-import re
+from dateutil import parser
+import datetime
+import sys, re
 
-os.chdir('C:\Users\lycarter\Dropbox (MIT)\HackMIT2016')
 
-mbox = mailbox.mbox('Reuse.mbox')
+dir_path = os.path.dirname(os.path.realpath(__file__))
+file_path = os.path.join(os.sep, dir_path, sys.argv[1])
+mbox = mailbox.mbox(file_path)
 
 emailExtract = re.compile(r"(?P<email>\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})")
 
