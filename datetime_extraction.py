@@ -6,7 +6,7 @@ import datetime
 from datetime import timezone
 import sys
 
-mbox = mailbox.mbox(sys.argv[0])
+mbox = mailbox.mbox(sys.argv[1])
 
 dates = [message.get("Date") for message in mbox]
 
@@ -27,3 +27,4 @@ print('\n')
 
 for row in freq:
 	print(*row, sep='\t')
+42
