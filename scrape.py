@@ -25,4 +25,7 @@ for message in mbox:
 
 sorted_senders = sorted(senders, key=senders.get, reverse=True)
 
+with open('spammiest.txt', 'w') as f:
+	f.write(str(sorted_senders))
+
 print sorted_senders[:10]
