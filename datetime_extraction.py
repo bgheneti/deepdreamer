@@ -4,10 +4,9 @@ import os
 from dateutil import parser
 import datetime
 from datetime import timezone
+import sys
 
-os.chdir('/home/ksmori/Desktop')
- 
-mbox = mailbox.mbox('free_food.mbox')
+mbox = mailbox.mbox(sys.argv[0])
 
 dates = [message.get("Date") for message in mbox]
 
